@@ -8,7 +8,6 @@
 		<totalCost>1000</totalCost>
 		<prerequisites>
 			<li>A2B2</li>
-			<li>GeothermalPower</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
