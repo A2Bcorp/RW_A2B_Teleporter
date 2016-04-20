@@ -24,8 +24,11 @@ Global
 		$0.VersionControlPolicy = $2
 		$2.inheritsSet = Mono
 		$0.TextStylePolicy = $3
-		$3.inheritsSet = null
-		$3.scope = text/x-csharp
+		$3.inheritsSet = VisualStudio
+		$3.scope = text/plain
+		$3.FileWidth = 120
+		$3.NoTabsAfterNonTabs = True
+		$3.inheritsScope = text/plain
 		$0.CSharpFormattingPolicy = $4
 		$4.AlignEmbeddedStatements = False
 		$4.SimplePropertyFormatting = ForceNewLine
@@ -84,7 +87,7 @@ Global
 		$5.inheritsSet = VisualStudio
 		$5.inheritsScope = text/plain
 		$5.scope = text/plain
-		version = 0.12.1.0
+		version = 0.12.2.0
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

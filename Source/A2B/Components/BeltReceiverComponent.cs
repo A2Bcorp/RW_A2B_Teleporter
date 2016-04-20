@@ -95,8 +95,10 @@ namespace A2B_Teleport {
                 return false;
 
             // If I can't accept from anyone, I certainly can't accept from you.
-            if( !onlyCheckConnection && !CanAcceptSomething() )
-                return false;
+            if( !onlyCheckConnection )
+                foreach( var thing in belt.ItemContainer.ThingsToMove )
+                    if( !CanAcceptThing( thing ) )
+                        return false;
 
             BeltSenderComponent tele = belt as BeltSenderComponent;
 
