@@ -1,119 +1,136 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="BuildingBase" Abstract="True">
-		<category>Building</category>
+    <ThingDef Name="BuildingBase" Abstract="True">
+        <category>Building</category>
 
-		<soundImpactDefault>BulletImpactSteel</soundImpactDefault>
+        <soundImpactDefault>BulletImpactSteel</soundImpactDefault>
 
-		<selectable>true</selectable>
-		<rotatable>true</rotatable>
+        <selectable>true</selectable>
+        <rotatable>true</rotatable>
 
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<constructEffect>ConstructMetal</constructEffect>
-		<repairEffect>Repair</repairEffect>
-		<holdsRoof>false</holdsRoof>
-		<blockLight>false</blockLight>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<filthLeaving>BuildingRubble</filthLeaving>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <constructEffect>ConstructMetal</constructEffect>
+        <repairEffect>Repair</repairEffect>
+        <holdsRoof>false</holdsRoof>
+        <blockLight>false</blockLight>
+        <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <filthLeaving>BuildingRubble</filthLeaving>
 
-		<altitudeLayer>Waist</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<pathCost>1000</pathCost>
+        <altitudeLayer>Waist</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <pathCost>1000</pathCost>
 
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<castEdgeShadows>true</castEdgeShadows>
-		<fillPercent>1</fillPercent>
-		<staticSunShadowHeight>0.34</staticSunShadowHeight>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <castEdgeShadows>true</castEdgeShadows>
+        <fillPercent>1</fillPercent>
+        <staticSunShadowHeight>0.34</staticSunShadowHeight>
 
-		<tickerType>Normal</tickerType>
+        <tickerType>Normal</tickerType>
 
-		<designationCategory>ConveyorOptions</designationCategory>
-		<researchPrerequisite>A2B_Teleporters</researchPrerequisite>
-	</ThingDef>
+        <comps>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Breakdownable" />
+        </comps>
 
-	<ThingDef ParentName="BuildingBase">
-		<defName>A2BTeleporter</defName>
-		<label>teleporter</label>
-		<thingClass>Building</thingClass>
-		<graphicData>
-			<texPath>Things/Building/Teleporter</texPath>
-			<drawSize>(2,1)</drawSize>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<statBases>
-			<WorkToMake>1000</WorkToMake>
-			<MaxHitPoints>300</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-			<Beauty>0</Beauty>
-		</statBases>
-		<description>Teleports items to the closest available receiver on the same channel.</description>
-		<comps>
-			<li>
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>100</basePowerConsumption>
-				<soundPowerOn>PowerOnSmall</soundPowerOn>
-				<soundPowerOff>PowerOffSmall</soundPowerOff>
-				<transmitsPower>true</transmitsPower>
-				<startElectricalFires>true</startElectricalFires> 
-			</li>
-			<li>
-				<compClass>CompGlower</compClass>
-				<glowRadius>3</glowRadius>
-				<glowColor>(255,58,0,0)</glowColor>
-			</li>
-			<li>
-				<compClass>A2B_Teleport.BeltSenderComponent</compClass>
-			</li>
-		</comps>
-		<size>(2,1)</size>
-		<costList>
-			<Steel>50</Steel>
-			<Plasteel>100</Plasteel>
-		</costList>
-		<designationHotkey>T</designationHotkey>
-	</ThingDef>
+        <designationCategory>ConveyorOptions</designationCategory>
 
-	<ThingDef ParentName="BuildingBase">
-		<defName>A2BReceiver</defName>
-		<label>receiver</label>
-		<thingClass>Building</thingClass>
-		<graphicData>
-			<texPath>Things/Building/Receiver</texPath>
-			<drawSize>(2,1)</drawSize>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<statBases>
-			<WorkToMake>800</WorkToMake>
-			<MaxHitPoints>300</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-			<Beauty>0</Beauty>
-		</statBases>
-		<description>Receives items from a teleporter.  Be sure to use matching channels.</description>
-		<comps>
-			<li>
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>100</basePowerConsumption>
-				<soundPowerOn>PowerOnSmall</soundPowerOn>
-				<soundPowerOff>PowerOffSmall</soundPowerOff>
-				<transmitsPower>true</transmitsPower>
-				<startElectricalFires>true</startElectricalFires>
-			</li>
-			<li>
-				<compClass>CompGlower</compClass>
-				<glowRadius>2</glowRadius>
-				<glowColor>(0,230,0,0)</glowColor>
-			</li>
-			<li>
-				<compClass>A2B_Teleport.BeltReceiverComponent</compClass>
-			</li>
-		</comps>
-		<size>(2,1)</size>
-		<costList>
-			<Steel>50</Steel>
-			<Plasteel>100</Plasteel>
-		</costList>
-		<designationHotkey>R</designationHotkey>
-	</ThingDef>
+    </ThingDef>
+
+    <ThingDef Name="A2BTBase" ParentName="BuildingBase" Abstract="True">
+        <researchPrerequisites>
+            <li>A2B_Teleporters</li>
+        </researchPrerequisites>
+    </ThingDef>
+
+    <ThingDef Name="A2BTMinified" ParentName="A2BTBase" Abstract="True">
+        <minifiedDef>MinifiedFurniture</minifiedDef>
+    </ThingDef>
+
+    <ThingDef ParentName="A2BTMinified">
+        <defName>A2BTeleporter</defName>
+        <label>teleporter</label>
+        <thingClass>Building</thingClass>
+        <graphicData>
+            <texPath>Things/Building/Teleporter</texPath>
+            <drawSize>(2,1)</drawSize>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <WorkToMake>1000</WorkToMake>
+            <MaxHitPoints>300</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <Beauty>0</Beauty>
+        </statBases>
+        <description>Teleports items to the closest available receiver on the same channel.</description>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>100</basePowerConsumption>
+                <soundPowerOn>PowerOnSmall</soundPowerOn>
+                <soundPowerOff>PowerOffSmall</soundPowerOff>
+                <transmitsPower>true</transmitsPower>
+                <startElectricalFires>true</startElectricalFires> 
+            </li>
+            <li Class="CompProperties_Glower">
+                <compClass>CompGlower</compClass>
+                <glowRadius>3</glowRadius>
+                <glowColor>(255,58,0,0)</glowColor>
+            </li>
+            <li>
+                <compClass>A2B_Teleport.BeltSenderComponent</compClass>
+            </li>
+        </comps>
+        <size>(2,1)</size>
+        <costList>
+            <Steel>50</Steel>
+            <Plasteel>25</Plasteel>
+            <Components>5</Components>
+        </costList>
+        <designationHotkey>T</designationHotkey>
+    </ThingDef>
+
+    <ThingDef ParentName="A2BTMinified">
+        <defName>A2BReceiver</defName>
+        <label>receiver</label>
+        <thingClass>Building</thingClass>
+        <graphicData>
+            <texPath>Things/Building/Receiver</texPath>
+            <drawSize>(2,1)</drawSize>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <statBases>
+            <WorkToMake>800</WorkToMake>
+            <MaxHitPoints>300</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <Beauty>0</Beauty>
+        </statBases>
+        <description>Receives items from a teleporter.  Be sure to use matching channels.</description>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>100</basePowerConsumption>
+                <soundPowerOn>PowerOnSmall</soundPowerOn>
+                <soundPowerOff>PowerOffSmall</soundPowerOff>
+                <transmitsPower>true</transmitsPower>
+                <startElectricalFires>true</startElectricalFires>
+            </li>
+            <li Class="CompProperties_Glower">
+                <compClass>CompGlower</compClass>
+                <glowRadius>2</glowRadius>
+                <glowColor>(0,230,0,0)</glowColor>
+            </li>
+            <li>
+                <compClass>A2B_Teleport.BeltReceiverComponent</compClass>
+            </li>
+        </comps>
+        <size>(2,1)</size>
+        <costList>
+            <Steel>50</Steel>
+            <Plasteel>25</Plasteel>
+            <Components>5</Components>
+        </costList>
+        <designationHotkey>R</designationHotkey>
+    </ThingDef>
 
 </Defs>

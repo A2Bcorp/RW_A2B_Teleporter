@@ -123,7 +123,7 @@ namespace A2B_Teleport
 
             // No target
             if( Receiver == null ){
-                PowerComponent.PowerOutput = -PowerComponent.props.basePowerConsumption;
+                PowerComponent.PowerOutput = -PowerComponent.Props.basePowerConsumption;
                 return;
             }
 
@@ -164,7 +164,7 @@ namespace A2B_Teleport
         {
             // Already targetted
             if( ( Receiver != null )&&
-                ( Receiver.CanAcceptSomething() ) )
+                ( Receiver.CanAcceptThing( thing ) ) )
                 return Receiver.parent.Position;
 
             // Find a new target
@@ -209,7 +209,7 @@ namespace A2B_Teleport
             MoteThrower.ThrowLightningGlow( Receiver.parent.DrawPos, Random.Range( 4.8f, 5.2f ) );
 
             // Reset power usage and mode
-            PowerComponent.PowerOutput = -PowerComponent.props.basePowerConsumption;
+            PowerComponent.PowerOutput = -PowerComponent.Props.basePowerConsumption;
             CurrentState = TeleportState.Default;
             Receiver.Unlock( this );
         }
@@ -223,7 +223,7 @@ namespace A2B_Teleport
 
                 status.Thing.DrawAt( drawPos );
 
-                DrawGUIOverlay( status, drawPos );
+                //DrawGUIOverlay( status, drawPos );
             }
         }
 

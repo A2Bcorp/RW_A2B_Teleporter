@@ -97,7 +97,7 @@ namespace A2B_Teleport {
 	public static class A2BTeleportResearch
 	{
 
-		public static bool Power()
+		public static bool Power( object target )
 		{
 			if (A2BResearch.ResearchGroupComplete(A2BTeleportData.def.PowerResearch)) {
 				A2BTeleportData.Power.BasePowerConsumption += A2BTeleportData.def.BasePowerConsumptionOffset;
@@ -108,7 +108,7 @@ namespace A2B_Teleport {
 			return false;
 		}
 
-		public static bool Heat()
+        public static bool Heat( object target )
 		{
 			if (A2BResearch.ResearchGroupComplete(A2BTeleportData.def.HeatResearch)) {
 				A2BTeleportData.Heat.DegreesPerCell += A2BTeleportData.def.DegreesPerCellOffset;
@@ -118,7 +118,7 @@ namespace A2B_Teleport {
 			return false;
 		}
 
-		public static bool Channels()
+        public static bool Channels( object target )
 		{
 			if (A2BResearch.ResearchGroupComplete(A2BTeleportData.def.ChannelsResearch)) {
 				A2BTeleportData.Channels.NumTeleporterChannels += A2BTeleportData.def.NumTeleporterChannelsOffset;
@@ -128,7 +128,7 @@ namespace A2B_Teleport {
 			return false;
 		}
 
-		public static bool Speed()
+        public static bool Speed( object target )
 		{
 			if (A2BResearch.ResearchGroupComplete(A2BTeleportData.def.SpeedResearch)) {
 				A2BTeleportData.Speed.SpeedMultiplier += A2BTeleportData.def.SpeedMultiplierOffset;
