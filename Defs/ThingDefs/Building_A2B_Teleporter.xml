@@ -85,7 +85,7 @@
         <costList>
             <Steel>50</Steel>
             <Plasteel>25</Plasteel>
-            <Components>5</Components>
+            <Components>3</Components>
         </costList>
         <designationHotkey>T</designationHotkey>
     </ThingDef>
@@ -128,7 +128,7 @@
         <costList>
             <Steel>50</Steel>
             <Plasteel>25</Plasteel>
-            <Components>5</Components>
+            <Components>3</Components>
         </costList>
         <designationHotkey>R</designationHotkey>
     </ThingDef>
